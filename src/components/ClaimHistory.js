@@ -5,7 +5,7 @@ export default function ClaimHistory({ refreshTrigger }) {
   const [history, setHistory] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/history').then((res) => setHistory(res.data));
+    axios.get('https://leaderboard-backend-1-rm3g.onrender.com/history').then((res) => setHistory(res.data));
   }, [refreshTrigger]);
 
   return (

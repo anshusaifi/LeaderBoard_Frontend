@@ -6,7 +6,7 @@ export default function ClaimButton({ selectedUser, onClaimed }) {
       alert('Please select a user first');
       return;
     }
-    axios.post(`http://localhost:5000/users/${selectedUser}/claim`).then((res) => {
+    axios.post(`https://leaderboard-backend-1-rm3g.onrender.com/users/${selectedUser}/claim`).then((res) => {
       onClaimed(); // Notify parent to refresh leaderboard
       alert(`User received ${res.data.points} points!`);
     });

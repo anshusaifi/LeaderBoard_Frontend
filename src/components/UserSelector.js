@@ -6,7 +6,7 @@ export default function UserSelector({ selectedUser, setSelectedUser, onUserAdde
   const [newUserName, setNewUserName] = useState('');
 
   const fetchUsers = () => {
-    axios.get('http://localhost:5000/users').then((res) => setUsers(res.data));
+    axios.get('https://leaderboard-backend-1-rm3g.onrender.com/users').then((res) => setUsers(res.data));
   };
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function UserSelector({ selectedUser, setSelectedUser, onUserAdde
 
   const handleAddUser = () => {
     if (!newUserName) return;
-    axios.post('http://localhost:5000/users', { name: newUserName }).then(() => {
+    axios.post('https://leaderboard-backend-1-rm3g.onrender.com/users', { name: newUserName }).then(() => {
       setNewUserName('');
       fetchUsers();
       onUserAdded(); // Notify parent to refresh leaderboard if needed

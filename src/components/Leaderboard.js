@@ -5,7 +5,7 @@ export default function Leaderboard({ refreshTrigger }) {
   const [users, setUsers] = useState([]);
 
   const fetchLeaderboard = () => {
-    axios.get('http://localhost:5000/leaderboard').then((res) => setUsers(res.data));
+    axios.get('https://leaderboard-backend-1-rm3g.onrender.com/leaderboard').then((res) => setUsers(res.data));
   };
 
   useEffect(() => {
