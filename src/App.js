@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import UserSelector from './components/UserSelector';
+import ClaimButton from './components/ClaimButton';
+import Leaderboard from './components/Leaderboard';
+import ClaimHistory from './components/ClaimHistory';
 
-function App() {
+export default function App() {
+  const [selectedUser, setSelectedUser] = useState('');
+  const [refreshFlag, setRefreshFlag] = useState(false);
+
+  const triggerRefresh = () => setRefreshFlag(!refreshFlag);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="max-w-2xl mx-auto mt-8 space-y-4">
+      <UserSelector selectedUser={selectedUser} setSelectedUser={setSelectedUser} onUserAdded={triggerRefresh} />
+      <ClaimButton selectedUser={selectedUser} onClaimed={triggerRefresh} />
+      <Leaderboard refreshTrigger={refreshFlag} />
+      <ClaimHistory refreshTrigger={refreshFlag} />
     </div>
   );
 }
-
-export default App;
